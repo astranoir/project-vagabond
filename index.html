@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="board">
+  <head>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+  </head>
+  <body>
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+
+    <div ng-controller="BoardController as boardCtrl">
+    	<div  ng-repeat="card in boardCtrl.cards">
+	    	<h3>{{card.title}}</h1>
+	    	<p>Accountable: {{card.accountable}}</p>
+	    	<p>
+	    	Responsible:
+		    	<ul> 
+		    		<li ng-repeat="responsibleIndividual in card.responsible">{{responsibleIndividual}}</li>
+		    	</ul>
+		    Consulted:
+		    	<ul>
+		    		<li ng-repeat="consultedIndividual in card.consulted">{{consultedIndividual}}</li>
+		    	</ul>
+		    Informed: 
+		    	<ul>
+		    		<li ng-repeat="informedIndividual in card.informed">{{informedIndividual}}</li>
+		    	</ul>
+	    	</p>
+    	</div>
+    </div>
+  </body>
+</html>
