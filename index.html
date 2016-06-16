@@ -7,25 +7,193 @@
     <script type="text/javascript" src="angular.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
 
-    <div ng-controller="BoardController as boardCtrl">
-    	<div  ng-repeat="card in boardCtrl.cards">
-	    	<h3>{{card.title}}</h1>
-	    	<p>Accountable: {{card.accountable}}</p>
-	    	<p>
-	    	Responsible:
-		    	<ul> 
-		    		<li ng-repeat="responsibleIndividual in card.responsible">{{responsibleIndividual}}</li>
-		    	</ul>
-		    Consulted:
-		    	<ul>
-		    		<li ng-repeat="consultedIndividual in card.consulted">{{consultedIndividual}}</li>
-		    	</ul>
-		    Informed: 
-		    	<ul>
-		    		<li ng-repeat="informedIndividual in card.informed">{{informedIndividual}}</li>
-		    	</ul>
-	    	</p>
-    	</div>
+    <section ng-controller="ListController as listCtrl">
+	    <ul class="nav nav-pills">
+	    	<li ng-class="{ active:listCtrl.isSelected(1) }">
+	    		<a href ng-click="listCtrl.selectList(1)">Proposed</a>
+	    	</li>
+	    	<li ng-class="{ active:listCtrl.isSelected(2) }">
+	    		<a href ng-click="listCtrl.selectList(2)">Needs Discussion</a>
+	    	</li>
+	    	<li ng-class="{ active:listCtrl.isSelected(3) }">
+	    		<a href ng-click="listCtrl.selectList(3)">Ready to Be Worked</a>
+	    	</li>
+	    	<li ng-class="{ active:listCtrl.isSelected(4) }">
+	    		<a href ng-click="listCtrl.selectList(4)">Done</a>
+	    	</li>
+	    </ul>
+    <div class="list" name="proposed" ng-show="listCtrl.isSelected(1)">
+	    <ul class="list-group" ng-controller="BoardController as boardCtrl">
+	    	<li class="list-group-item" ng-repeat="card in boardCtrl.cards | orderBy:'order'" ng-show="card.status=='Proposed'">
+		    	<h3>{{card.title}}</h3>
+		    	<p>
+		    		<strong>Accountable:</strong> {{card.accountable}}
+		    	</p>
+		    	<p>
+		    		<strong>Responsible:</strong>
+			    	<ul> 
+			    		<li class="list-group-item" ng-repeat="responsibleIndividual in card.responsible">{{responsibleIndividual}}</li>
+			    	</ul>
+			    </p>
+			    <p>
+			    	<strong>Consulted:</strong>
+			    	<ul>
+			    		<li class="list-group-item" ng-repeat="consultedIndividual in card.consulted">{{consultedIndividual}}</li>
+			    	</ul>
+			    </p>
+			    <p>
+			    	<strong>Informed:</strong> 
+			    	<ul>
+			    		<li class="list-group-item" ng-repeat="informedIndividual in card.informed">{{informedIndividual}}</li>
+			    	</ul>
+		    	</p>
+		    	<p ng-show="card.dueDateUTC">
+		    		<strong>Due Date:</strong> {{card.dueDateUTC | date:"MM/dd/yyyy 'at' h:mma"}}
+		    	</p>
+		    	<p>
+		    		<strong>Status:</strong> {{card.status}}
+		    	</p>
+		    	<p>
+		    		<strong>Updated:</strong> By <em>{{card.updatedBy}}</em> on <em>{{card.updatedOnUTC | date:"MM/dd/yyyy 'at' h:mma"}}</em>
+		    	</p>
+		    	<p ng-show="card.budgetUSD">
+		    		<strong>Budget:</strong> {{card.budgetUSD | currency: $}}
+		    	</p>
+		    	<p ng-show="card.finalCostUSD">
+		    		<strong>Final Cost:</strong> {{card.finalCostUSD | currency: $}}
+		    	</p>
+	    	</li>
+	    </ul>
     </div>
+    <div class="list" name="needs-discussion" ng-show="listCtrl.isSelected(2)">
+	    <ul class="list-group" ng-controller="BoardController as boardCtrl">
+	    	<li class="list-group-item" ng-repeat="card in boardCtrl.cards | orderBy:'order'" ng-show="card.status=='Needs Discussion'">
+		    	<h3>{{card.title}}</h3>
+		    	<p>
+		    		<strong>Accountable:</strong> {{card.accountable}}
+		    	</p>
+		    	<p>
+		    		<strong>Responsible:</strong>
+			    	<ul> 
+			    		<li class="list-group-item" ng-repeat="responsibleIndividual in card.responsible">{{responsibleIndividual}}</li>
+			    	</ul>
+			    </p>
+			    <p>
+			    	<strong>Consulted:</strong>
+			    	<ul>
+			    		<li class="list-group-item" ng-repeat="consultedIndividual in card.consulted">{{consultedIndividual}}</li>
+			    	</ul>
+			    </p>
+			    <p>
+			    	<strong>Informed:</strong> 
+			    	<ul>
+			    		<li class="list-group-item" ng-repeat="informedIndividual in card.informed">{{informedIndividual}}</li>
+			    	</ul>
+		    	</p>
+		    	<p ng-show="card.dueDateUTC">
+		    		<strong>Due Date:</strong> {{card.dueDateUTC | date:"MM/dd/yyyy 'at' h:mma"}}
+		    	</p>
+		    	<p>
+		    		<strong>Status:</strong> {{card.status}}
+		    	</p>
+		    	<p>
+		    		<strong>Updated:</strong> By <em>{{card.updatedBy}}</em> on <em>{{card.updatedOnUTC | date:"MM/dd/yyyy 'at' h:mma"}}</em>
+		    	</p>
+		    	<p ng-show="card.budgetUSD">
+		    		<strong>Budget:</strong> {{card.budgetUSD | currency: $}}
+		    	</p>
+		    	<p ng-show="card.finalCostUSD">
+		    		<strong>Final Cost:</strong> {{card.finalCostUSD | currency: $}}
+		    	</p>
+	    	</li>
+	    </ul>
+    </div>
+    <div class="list" name="ready-to-be-worked" ng-show="listCtrl.isSelected(3)">
+	    <ul class="list-group" ng-controller="BoardController as boardCtrl">
+	    	<li class="list-group-item" ng-repeat="card in boardCtrl.cards | orderBy:'order'" ng-show="card.status=='Ready to Be Worked'">
+		    	<h3>{{card.title}}</h3>
+		    	<p>
+		    		<strong>Accountable:</strong> {{card.accountable}}
+		    	</p>
+		    	<p>
+		    		<strong>Responsible:</strong>
+			    	<ul> 
+			    		<li class="list-group-item" ng-repeat="responsibleIndividual in card.responsible">{{responsibleIndividual}}</li>
+			    	</ul>
+			    </p>
+			    <p>
+			    	<strong>Consulted:</strong>
+			    	<ul>
+			    		<li class="list-group-item" ng-repeat="consultedIndividual in card.consulted">{{consultedIndividual}}</li>
+			    	</ul>
+			    </p>
+			    <p>
+			    	<strong>Informed:</strong> 
+			    	<ul>
+			    		<li class="list-group-item" ng-repeat="informedIndividual in card.informed">{{informedIndividual}}</li>
+			    	</ul>
+		    	</p>
+		    	<p ng-show="card.dueDateUTC">
+		    		<strong>Due Date:</strong> {{card.dueDateUTC | date:"MM/dd/yyyy 'at' h:mma"}}
+		    	</p>
+		    	<p>
+		    		<strong>Status:</strong> {{card.status}}
+		    	</p>
+		    	<p>
+		    		<strong>Updated:</strong> By <em>{{card.updatedBy}}</em> on <em>{{card.updatedOnUTC | date:"MM/dd/yyyy 'at' h:mma"}}</em>
+		    	</p>
+		    	<p ng-show="card.budgetUSD">
+		    		<strong>Budget:</strong> {{card.budgetUSD | currency: $}}
+		    	</p>
+		    	<p ng-show="card.finalCostUSD">
+		    		<strong>Final Cost:</strong> {{card.finalCostUSD | currency: $}}
+		    	</p>
+	    	</li>
+	    </ul>
+    </div>
+    <div class="list" name="done" ng-show="listCtrl.isSelected(4)">
+	    <ul class="list-group" ng-controller="BoardController as boardCtrl">
+	    	<li class="list-group-item" ng-repeat="card in boardCtrl.cards | orderBy:'order'" ng-show="card.status=='Done'">
+		    	<h3>{{card.title}}</h3>
+		    	<p>
+		    		<strong>Accountable:</strong> {{card.accountable}}
+		    	</p>
+		    	<p>
+		    		<strong>Responsible:</strong>
+			    	<ul> 
+			    		<li class="list-group-item" ng-repeat="responsibleIndividual in card.responsible">{{responsibleIndividual}}</li>
+			    	</ul>
+			    </p>
+			    <p>
+			    	<strong>Consulted:</strong>
+			    	<ul>
+			    		<li class="list-group-item" ng-repeat="consultedIndividual in card.consulted">{{consultedIndividual}}</li>
+			    	</ul>
+			    </p>
+			    <p>
+			    	<strong>Informed:</strong> 
+			    	<ul>
+			    		<li class="list-group-item" ng-repeat="informedIndividual in card.informed">{{informedIndividual}}</li>
+			    	</ul>
+		    	</p>
+		    	<p ng-show="card.dueDateUTC">
+		    		<strong>Due Date:</strong> {{card.dueDateUTC | date:"MM/dd/yyyy 'at' h:mma"}}
+		    	</p>
+		    	<p>
+		    		<strong>Status:</strong> {{card.status}}
+		    	</p>
+		    	<p>
+		    		<strong>Updated:</strong> By <em>{{card.updatedBy}}</em> on <em>{{card.updatedOnUTC | date:"MM/dd/yyyy 'at' h:mma"}}</em>
+		    	</p>
+		    	<p ng-show="card.budgetUSD">
+		    		<strong>Budget:</strong> {{card.budgetUSD | currency: $}}
+		    	</p>
+		    	<p ng-show="card.finalCostUSD">
+		    		<strong>Final Cost:</strong> {{card.finalCostUSD | currency: $}}
+		    	</p>
+	    	</li>
+	    </ul>
+    </div>
+    </section>
   </body>
 </html>
