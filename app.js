@@ -3,7 +3,40 @@
 
   app.controller('BoardController', function(){
   	this.cards = tasks;
+  	
+  	this.createNewCard = function(){
+  		var newCard = {
+		  	title: '',
+		  	responsible: [],
+		  	accountable: '',
+		  	consulted: [],
+		  	informed: [],
+		  	description: '',
+		  	dueDateUTC: '',
+		  	budgetUSD: 0,
+		  	finalCostUSD: 0,
+		  	status: '',
+		  	isArchived: false,
+		  	updatedBy: 'system',
+		  	updatedOnUTC: '',
+		  	order: 999
+		  };
+		  return newCard;
+  	};
+
+  	this.newCard = this.createNewCard();
+
+  	this.addCard = function(){
+  		this.newCard.updatedOnUTC = new Date();
+  		this.cards.push(this.newCard);
+
+	  	this.newCard = this.createNewCard();
+  	};
   });
+
+  app.controller('UserController', function(){
+  	this.users = teamMembers;
+  })
 
   app.controller('ListController', function(){
   	this.list = 1;
@@ -16,6 +49,155 @@
   		return this.list === listSelected;
   	};
   });
+  app.controller('StatusController', function(){
+  	this.statuses = cardStatuses;
+  });
+
+  var cardStatuses = [
+  	{
+  		name: 'Proposed',
+  		order: 0
+  	},
+  	{
+  		name: 'Needs Discussion',
+  		order: 1
+  	},
+  	{
+  		name: 'Ready to Be Worked',
+  		order: 2
+  	},
+  	{
+  		name: 'In Progress',
+  		order: 3
+  	},
+  	{
+  		name: 'Done',
+  		order: 4
+  	}
+  ];
+
+  var teamMembers = [
+  	{
+  		name: 'Student 1',
+  		email: 'student1@sample.com',
+  		role: 'Student',
+  		phone: '5555555555'
+  	},
+  	{
+  		name: 'Student 2',
+  		email: 'student2@sample.com',
+  		role: 'Student',
+  		phone: '5555555555'
+  	},
+  	{
+  		name: 'Student 3',
+  		email: 'student3@sample.com',
+  		role: 'Student',
+  		phone: '5555555555'
+  	},
+  	{
+  		name: 'Student 4',
+  		email: 'student4@sample.com',
+  		role: 'Student',
+  		phone: '5555555555'
+  	},
+  	{
+  		name: 'Student 5',
+  		email: 'student5@sample.com',
+  		role: 'Student',
+  		phone: '5555555555'
+  	},
+  	{
+  		name: 'Student 6',
+  		email: 'student6@sample.com',
+  		role: 'Student',
+  		phone: '5555555555'
+  	},
+  	{
+  		name: 'Student 7',
+  		email: 'student7@sample.com',
+  		role: 'Student',
+  		phone: '5555555555'
+  	},
+  	{
+  		name: 'Student 8',
+  		email: 'student8@sample.com',
+  		role: 'Student',
+  		phone: '5555555555'
+  	},
+  	{
+  		name: 'Student 9',
+  		email: 'student9@sample.com',
+  		role: 'Student',
+  		phone: '5555555555'
+  	},
+  	{
+  		name: 'Student 10',
+  		email: 'student10@sample.com',
+  		role: 'Student',
+  		phone: '5555555555'
+  	},
+  	{
+  		name: 'Mentor A',
+  		email: 'mentora@sample.com',
+  		role: 'Mentor',
+  		phone: '5555555555'
+  	},
+  	{
+  		name: 'Mentor B',
+  		email: 'mentorb@sample.com',
+  		role: 'Mentor',
+  		phone: '5555555555'
+  	},
+  	{
+  		name: 'Mentor C',
+  		email: 'mentorc@sample.com',
+  		role: 'Mentor',
+  		phone: '5555555555'
+  	},
+  	{
+  		name: 'Mentor D',
+  		email: 'mentord@sample.com',
+  		role: 'Mentor',
+  		phone: '5555555555'
+  	},
+  	{
+  		name: 'Mentor E',
+  		email: 'mentore@sample.com',
+  		role: 'Mentor',
+  		phone: '5555555555'
+  	},
+  	{
+  		name: 'Mentor F',
+  		email: 'mentorf@sample.com',
+  		role: 'Mentor',
+  		phone: '5555555555'
+  	},
+  	{
+  		name: 'Mentor G',
+  		email: 'mentorg@sample.com',
+  		role: 'Mentor',
+  		phone: '5555555555'
+  	},
+  	{
+  		name: 'Mentor H',
+  		email: 'mentorh@sample.com',
+  		role: 'Mentor',
+  		phone: '5555555555'
+  	},
+  	{
+  		name: 'Mentor I',
+  		email: 'mentori@sample.com',
+  		role: 'Mentor',
+  		phone: '5555555555'
+  	},
+  	{
+  		name: 'Mentor J',
+  		email: 'mentorj@sample.com',
+  		role: 'Mentor',
+  		phone: '5555555555'
+  	}
+  ];
 
   var tasks = [
 	  {
