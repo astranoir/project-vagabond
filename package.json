@@ -1,0 +1,24 @@
+{
+  "name": "project-vagabond",
+  "version": "1.0.0",
+  "description": "Project Vagabond",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^4.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/astranoir/project-vagabond.git"
+  },
+  "author": "Melisa Bube <melissa@joynerbube.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/astranoir/project-vagabond/issues"
+  },
+  "homepage": "https://github.com/astranoir/project-vagabond#readme"
+}
