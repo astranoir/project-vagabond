@@ -11,6 +11,7 @@
     <script type="text/javascript" src="../assets/js/board-cards.js"></script>
 
     <section ng-controller="ListController as listCtrl">
+	    <h1>Tasks</h1>
 	    <ul class="nav nav-pills">
 	    	<li ng-class="{ active:listCtrl.isSelected(1) }">
 	    		<a href ng-click="listCtrl.selectList(1)">Proposed</a>
@@ -28,7 +29,6 @@
 	    		<a href ng-click="listCtrl.selectList(5)">Done</a>
 	    	</li>
 	    </ul>
-	    <h1>Tasks</h1>
 	    <div class="list" name="proposed" ng-show="listCtrl.isSelected(1)">
 		    <ul class="list-group" ng-controller="BoardController as boardCtrl">
 		    	<li class="list-group-item" ng-repeat="card in boardCtrl.cards | orderBy:'order'" ng-show="card.status=='Proposed'">
@@ -66,7 +66,7 @@
 	    </div>
     </section>
     <section>
-    <h1>Enter a New Task</h1>
+    <h3>Enter a New Task</h3>
 			<form name="newCardForm" ng-controller="BoardController as boardCtrl" ng-submit="boardCtrl.addCard()">
 				<card-form></card-form>
 			</form>
