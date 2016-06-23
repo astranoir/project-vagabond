@@ -1,0 +1,43 @@
+<div class="panel-group">
+	<div class="panel panel-primary">
+		<div class="panel-heading">{{card.title}}</div>
+		<div class="panel-body">
+			<p>
+				<strong>Accountable:</strong> {{card.accountable}}
+			</p>
+			<p>
+				<strong>Responsible:</strong>
+				<ul> 
+					<li class="list-group-item" ng-repeat="responsibleIndividual in card.responsible">{{responsibleIndividual}}</li>
+				</ul>
+			</p>
+			<p>
+				<strong>Consulted:</strong>
+				<ul>
+					<li class="list-group-item" ng-repeat="consultedIndividual in card.consulted">{{consultedIndividual}}</li>
+				</ul>
+			</p>
+			<p>
+				<strong>Informed:</strong> 
+				<ul>
+					<li class="list-group-item" ng-repeat="informedIndividual in card.informed">{{informedIndividual}}</li>
+				</ul>
+			</p>
+			<p ng-show="card.dueDateUTC">
+				<strong>Due Date:</strong> {{card.dueDateUTC | date:"MM/dd/yyyy 'at' h:mma"}}
+			</p>
+			<p>
+				<strong>Status:</strong> {{card.status}}
+			</p>
+			<p>
+				<strong>Updated:</strong> By <em>{{card.updatedBy}}</em> on <em>{{card.updatedOnUTC | date:"MM/dd/yyyy 'at' h:mma"}}</em>
+			</p>
+			<p ng-show="card.budgetUSD">
+				<strong>Budget:</strong> {{card.budgetUSD | currency: $}}
+			</p>
+			<p ng-show="card.finalCostUSD">
+				<strong>Final Cost:</strong> {{card.finalCostUSD | currency: $}}
+			</p>
+		</div>
+	</div>
+</div>

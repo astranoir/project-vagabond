@@ -14,6 +14,20 @@
     "order": 5
   },
   {
+    "title": "Create scouting template",
+    "responsible": ["Student 1", "Student 2", "Student 4"],
+    "accountable": "Student 4",
+    "consulted": ["Student 3", "Student 9", "Mentor A"],
+    "informed": ["Student 7", "Student 8", "Student 9", "Mentor B"],
+    "description": "Create scouting template for current game",
+    "dueDateUTC": "1288323623006",
+    "status": "Done",
+    "isArchived": true,
+    "updatedBy": "system",
+    "updatedOnUTC": "1288323623006",
+    "order": 6
+  },
+  {
     "title": "CAD Design for Arms",
     "responsible": ["Student 1"],
     "accountable": "Student 1",

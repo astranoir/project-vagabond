@@ -1,0 +1,22 @@
+[
+	{
+		"name": "Proposed",
+		"order": 0
+	},
+	{
+		"name": "Needs Discussion",
+		"order": 1
+	},
+	{
+		"name": "Ready to Be Worked",
+		"order": 2
+	},
+	{
+		"name": "In Progress",
+		"order": 3
+	},
+	{
+		"name": "Done",
+		"order": 4
+	}
+]

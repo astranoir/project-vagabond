@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html ng-app="board">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../css/vendor/bootstrap.min.css" />
+  </head>
+  <body>
+    <script type="text/javascript" src="js/vendor/angular.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/controllers/users-show-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/statuses-show-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/lists-select-controller.js"></script>
+    <script type="text/javascript" src="js/directives/board-cards.js"></script>
+
+    <div class="container">
+    	<div class="jumbotron">
+    		<h1>Project Vagabond</h1>
+    		<p>Task Management</p>
+    	</div>
+	    <section ng-controller="ListController as listCtrl">
+		    <nav class="navbar navbar-inverse">
+		    	<div class="container-fluid">
+		    		<div class="navbar-header">
+		    			<div class="navbar-brand">Tasks</div>
+		    		</div>
+		    	</div>
+			    <ul class="nav navbar-nav">
+			    	<li ng-class="{ active:listCtrl.isSelected(1) }">
+			    		<a href ng-click="listCtrl.selectList(1)">Proposed</a>
+			    	</li>
+			    	<li ng-class="{ active:listCtrl.isSelected(2) }">
+			    		<a href ng-click="listCtrl.selectList(2)">Needs Discussion</a>
+			    	</li>
+			    	<li ng-class="{ active:listCtrl.isSelected(3) }">
+			    		<a href ng-click="listCtrl.selectList(3)">Ready to Be Worked</a>
+			    	</li>
+			    	<li ng-class="{ active:listCtrl.isSelected(4) }">
+			    		<a href ng-click="listCtrl.selectList(4)">In Progress</a>
+			    	</li>
+			    	<li ng-class="{ active:listCtrl.isSelected(5) }">
+			    		<a href ng-click="listCtrl.selectList(5)">Done</a>
+			    	</li>
+			    </ul>
+			  </nav>
+		    <div class="list" name="proposed" ng-show="listCtrl.isSelected(1)">
+			    <ul class="list-group" ng-controller="BoardController as boardCtrl">
+			    	<li class="list-group-item" ng-repeat="card in boardCtrl.cards | orderBy:'order'" ng-show="card.status=='Proposed'">
+			    		<card-detail></card-detail>
+			    	</li>
+			    </ul>
+		    </div>
+		    <div class="list" name="needs-discussion" ng-show="listCtrl.isSelected(2)">
+			    <ul class="list-group" ng-controller="BoardController as boardCtrl">
+			    	<li class="list-group-item" ng-repeat="card in boardCtrl.cards | orderBy:'order'" ng-show="card.status=='Needs Discussion'">
+			    		<card-detail></card-detail>
+			    	</li>
+			    </ul>
+		    </div>
+		    <div class="list" name="ready-to-be-worked" ng-show="listCtrl.isSelected(3)">
+			    <ul class="list-group" ng-controller="BoardController as boardCtrl">
+			    	<li class="list-group-item" ng-repeat="card in boardCtrl.cards | orderBy:'order'" ng-show="card.status=='Ready to Be Worked'">
+			    		<card-detail></card-detail>
+			    	</li>
+			    </ul>
+		    </div>
+		    <div class="list" name="in-progress" ng-show="listCtrl.isSelected(4)">
+			    <ul class="list-group" ng-controller="BoardController as boardCtrl">
+			    	<li class="list-group-item" ng-repeat="card in boardCtrl.cards | orderBy:'order'" ng-show="card.status=='In Progress'">
+			    		<card-detail></card-detail>
+			    	</li>
+			    </ul>
+		    </div>
+		    <div class="list" name="done" ng-show="listCtrl.isSelected(5)">
+			    <div class="list-group" ng-controller="BoardController as boardCtrl">
+			    	<div class="list-group-item" ng-repeat="card in boardCtrl.cards | orderBy:'order'" ng-show="card.status=='Done'">
+			    		<card-detail></card-detail>
+			    	</div>
+			    </div>
+		    </div>
+	    </section>
+	  </div>
+	  <div class="container">
+	    <section>
+	    <div class="panel panel-default">
+		    <div class="panel-heading">Enter a New Task</div>
+		    <div class="panel-body">
+					<form name="newCardForm" ng-controller="BoardController as boardCtrl" ng-submit="boardCtrl.addCard()">
+						<card-form></card-form>
+					</form>
+				</div>
+			</div>
+	    </section>
+	  </div>
+  </body>
+</html>

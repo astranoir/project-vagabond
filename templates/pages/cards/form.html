@@ -3,13 +3,13 @@
     	<li class="list-group-item">
 	    	<label>Title</label>
 	    	<br>
-	    	<input type="text" name="input-title" ng-model="boardCtrl.newCard.title"/>
+	    	<input class="form-control" type="text" name="input-title" ng-model="boardCtrl.newCard.title"/>
     	</li>
 
     	<li class="list-group-item">
 	    	<label>Accountable</label>
 	    	<br>
-	    	<select name="select-accountable" ng-controller="UserController as userCtrl" ng-model="boardCtrl.newCard.accountable">
+	    	<select class="form-control" name="select-accountable" ng-controller="UserController as userCtrl" ng-model="boardCtrl.newCard.accountable">
 	    		<option ng-repeat="user in userCtrl.users | orderBy:'name'" value="{{user.name}}">{{user.name}}</option>
 	    	</select>
 	    </li>
@@ -17,7 +17,7 @@
 	    <li class="list-group-item">
 	    	<label>Responsible</label>
 	    	<br>
-	    	<select multiple name="select-responsible" ng-controller="UserController as userCtrl" ng-model="boardCtrl.newCard.responsible">
+	    	<select class="form-control" multiple name="select-responsible" ng-controller="UserController as userCtrl" ng-model="boardCtrl.newCard.responsible">
 	    		<option ng-repeat="user in userCtrl.users | orderBy:'name'" value="{{user.name}}">{{user.name}}</option>
 	    	</select>
     	</li>
@@ -25,7 +25,7 @@
 	    <li class="list-group-item">
 	    	<label valign="top">Consulted</label>
 	    	<br>
-	    	<select multiple name="select-consulted" ng-controller="UserController as userCtrl" ng-model="boardCtrl.newCard.consulted">
+	    	<select class="form-control" multiple name="select-consulted" ng-controller="UserController as userCtrl" ng-model="boardCtrl.newCard.consulted">
 	    		<option ng-repeat="user in userCtrl.users | orderBy:'name'" value="{{user.name}}">{{user.name}}</option>
 	    	</select>
     	</li>
@@ -33,7 +33,7 @@
 	    <li class="list-group-item">
 	    	<label valign="top">Informed</label>
 	    	<br>
-	    	<select multiple name="select-informed" ng-controller="UserController as userCtrl"ng-model="boardCtrl.newCard.informed">
+	    	<select class="form-control" multiple name="select-informed" ng-controller="UserController as userCtrl"ng-model="boardCtrl.newCard.informed">
 	    		<option ng-repeat="user in userCtrl.users | orderBy:'name'" value="{{user.name}}">{{user.name}}</option>
 	    	</select>
     	</li>
@@ -41,19 +41,19 @@
 	    <li class="list-group-item">
 	    	<label valign="top">Budget</label>
 	    	<br>
-	    	<input type="number" min="0.00" ng-model="boardCtrl.newCard.budgetUSD" />
+	    	<input class="form-control" type="number" min="0.00" ng-model="boardCtrl.newCard.budgetUSD" />
     	</li>
 
 	    <li class="list-group-item">
 	    	<label valign="top">Final Cost</label>
 	    	<br>
-	    	<input type="number" min="0.00" ng-model="boardCtrl.newCard.finalCostUSD">
+	    	<input class="form-control" type="number" min="0.00" ng-model="boardCtrl.newCard.finalCostUSD">
     	</li>
 
     	<li class="list-group-item">
 	    	<label>Status</label>
 	    	<br>
-	    	<select name="select-status" ng-controller="StatusController as statusCtrl" ng-model="boardCtrl.newCard.status">
+	    	<select class="form-control" name="select-status" ng-controller="StatusController as statusCtrl" ng-model="boardCtrl.newCard.status">
 	    		<option ng-repeat="status in statusCtrl.statuses | orderBy: status.order" value="{{status.name}}">{{status.name}}</option>
 	    	</select>
 	    </li>
@@ -61,11 +61,11 @@
 	    <li class="list-group-item">
 	    	<label>Due Date</label>
 	    	<br>
-	    	<input type="datetime-local" name="input-due-datetime-local"  ng-model="boardCtrl.newCard.dueDateUTC"/>
+	    	<input class="form-control" type="datetime-local" name="input-due-datetime-local"  ng-model="boardCtrl.newCard.dueDateUTC"/>
 	    </li>
 
 	    <li class="list-group-item">
-	    	<button type="submit">Add Task</button>
+	    	<button class="btn btn-primary btn-block" type="submit">Add Task</button>
 	    </li>
   </ul>
 </div>
