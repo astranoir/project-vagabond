@@ -1,10 +1,10 @@
-angular.module('users', [ ])
-.controller('UserController', [ '$http', function($http){
+angular.module('Users', ['User'])
+.controller('UserController', ['User', function(User){
   var controller = this;
 
 	controller.users = [ ];
 
-  $http.get('../test-data/team-members.json').success(function(data){
+  User.all().success(function(data){
     controller.users = data;
   });
 }]);

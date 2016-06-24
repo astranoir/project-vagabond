@@ -1,10 +1,10 @@
-angular.module('board', ['users', 'statuses', 'lists', 'board-cards'])
-.controller('BoardController', [ '$http', function($http){
+angular.module('Board', ['Users', 'Statuses', 'Lists', 'Card', 'Task'])
+.controller('BoardController', ['Task', function(Task){
 	var controller = this;
 
   controller.cards = [ ];
 
-  $http.get('../test-data/board-tasks.json').success(function(data){
+  Task.all().success(function(data){
     controller.cards = data;
   });
 	

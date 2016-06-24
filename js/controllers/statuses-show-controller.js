@@ -1,10 +1,10 @@
-angular.module('statuses', [ ])
-.controller('StatusController', [ '$http', function($http){
+angular.module('Statuses', ['Status'])
+.controller('StatusController', [ 'Status', function(Status){
   var controller = this;
 
   controller.statuses = [ ];
 
-  $http.get('../test-data/card-statuses.json').success(function(data){
+  Status.all().success(function(data){
     controller.statuses = data;
   });
 }]);
