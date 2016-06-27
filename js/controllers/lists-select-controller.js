@@ -1,4 +1,4 @@
-angular.module('Lists', [ ])
+angular.module('Board')
 .controller('ListController', function(){
 	this.list = 1;
 

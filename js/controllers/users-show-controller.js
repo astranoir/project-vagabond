@@ -1,4 +1,4 @@
-angular.module('Users', ['User'])
+angular.module('Board')
 .controller('UserController', ['User', function(User){
   var controller = this;
 

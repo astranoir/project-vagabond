@@ -1,4 +1,4 @@
-angular.module('Status', [ ])
+angular.module('Board')
 .factory('Status', ['$http', function StatusFactory($http){
 	return {
 		all: function() {

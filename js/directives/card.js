@@ -1,4 +1,4 @@
-angular.module('Card', [ ])
+angular.module('Board')
 .directive('cardDetail', function(){
 	return{
 		restrict: 'E',

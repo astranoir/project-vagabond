@@ -1,4 +1,4 @@
-angular.module('Statuses', ['Status'])
+angular.module('Board')
 .controller('StatusController', [ 'Status', function(Status){
   var controller = this;
 

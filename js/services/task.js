@@ -1,4 +1,4 @@
-angular.module('Task', [ ])
+angular.module('Board')
 .factory('Task', ['$http', function TaskFactory($http){
 	return {
 		all: function() {

@@ -1,4 +1,4 @@
-angular.module('User', [ ])
+angular.module('Board')
 .factory('User', ['$http', function UserFactory($http){
 	return {
 		all: function() {

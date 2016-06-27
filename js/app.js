@@ -1,4 +1,4 @@
-angular.module('Board', ['Users', 'Statuses', 'Lists', 'Card', 'Task'])
+angular.module('Board', [ ])
 .controller('BoardController', ['Task', function(Task){
 	var controller = this;
 
