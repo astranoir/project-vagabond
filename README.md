@@ -1,3 +1,4 @@
+[![Dependency Status](https://dependencyci.com/github/astranoir/project-vagabond/badge)](https://dependencyci.com/github/astranoir/project-vagabond)
 # Project vagabond
 
 # Contributing
